@@ -409,3 +409,27 @@ At least 50 events occurred between 1-15 11:12 PST and 1-15 15:12 PST
 请注意，如果停止ElastAlert，然后稍后再次运行它，它将查找`elastalert_status`并在上一次查询的结束时间开始查询。如果重新启动ElastAlert，这可以防止重复或跳过警报。
 
 通过使用`--debug`标志代替`--verbose`，将记录电子邮件的正文，并且将不发送电子邮件。此外，查询将不会保存到`elastalert_status`。
+
+### 4.6 配置邮箱
+#### 4.6.1 在config中配置
+```
+from_addr: sziov20188888@163.com
+smtp_host: smtp.163.com
+smtp_auth_file: /data/elastalert/smtpconfig/smtp_auth_file.yaml
+smtp_port: 25
+```
+#### 4.6.1 smtp帐号密码配置
+```
+user: "xxxxxxxxxx@163.com"
+password: "yyyyyy"
+```
+#### 4.6.1 config或者rule中配置
+```
+alert:
+- "email"
+
+# (required, email specific)
+# a list of email addresses to send alerts to
+email:
+- "11111@qq.com"
+```
