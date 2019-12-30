@@ -433,3 +433,15 @@ alert:
 email:
 - "11111@qq.com"
 ```
+### 4.7 报警发送post请求
+```
+# 告警方式
+alert: post
+# 服务端接口
+http_post_url: "http://localhost:8088/alertapi"
+http_post_static_payload:
+    # 添加到post包中的数据，规则名称
+    rule_name: any_rule
+    # 添加到post包中的数据，告警级别
+    rule_level: medium
+```
