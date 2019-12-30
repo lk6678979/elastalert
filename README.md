@@ -8,7 +8,6 @@ https://elastalert.readthedocs.io/en/stable/running_elastalert.html#requirements
 ```yaml
 # This is the folder that contains the rule yaml files
 # Any .yaml file will be loaded as a rule
-# ElastAlert从中加载规则配置文件的位置。它将尝试加载文件夹中的每个.yaml文件。没有任何有效规则，ElastAlert将无法启动。随着此文件夹中文件的更改，ElastAlert还将加载新规则，停止运行丢失的规则并重新启动修改后的规则
 rules_folder: /data/elastalert/rules
 
 # How often ElastAlert will query Elasticsearch
@@ -124,3 +123,34 @@ alert_time_limit:
 #        propagate: false
 
 ```
+* `rules_folder`： 是ElastAlert从中加载规则配置文件的位置。它将尝试加载文件夹中的每个.yaml文件。没有任何有效规则，ElastAlert将无法启动。随着此文件夹中文件的更改，ElastAlert还将加载新规则，停止运行丢失的规则并重新启动修改后的规则。在本教程中，我们将使用example_rules文件夹。
+
+* `run_every`： 是ElastAlert多久查询一次Elasticsearch的时间。
+
+* `buffer_time`： 是查询窗口的大小，从运行每个查询的时间开始向后延伸。对于其中`use_count_query`或`use_terms_query`设置为true的规则，将忽略此值。
+
+* `es_host`： 是Elasticsearch群集的地址，ElastAlert将在其中存储有关其状态，查询运行，警报和错误的数据。每个规则还可以使用不同的Elasticsearch主机进行查询。
+
+* `es_port`： 是对应的端口es_host。
+
+* `use_ssl`： 可选的; 是否es_host使用TLS 连接；设置为True或False。
+
+* `verify_certs`： 可选的; 是否验证TLS证书；设置为True或False。默认是True
+
+* `client_cert`： 可选的; 用作客户端证书的PEM证书的路径
+
+* `client_key`： 可选的; 用作客户端密钥的私钥文件的路径
+
+* `ca_certs`： 可选的; 用于验证SSL连接的CA证书捆绑包的路径
+
+* `es_username`： 可选的; 用于连接的basic-auth用户名es_host。
+
+* `es_password`： 可选的; 用于连接的basic-auth密码es_host。
+
+* `es_url_prefix`： 可选的; Elasticsearch端点的URL前缀。
+
+* `es_send_get_body_as`： 可选的; 方法查询Elasticsearch - GET，POST或source。默认是GET
+
+* `writeback_index`： ElastAlert将在其中存储数据的索引的名称。我们稍后将创建此索引。
+
+* `alert_time_limit`： 是失败警报的重试窗口。
